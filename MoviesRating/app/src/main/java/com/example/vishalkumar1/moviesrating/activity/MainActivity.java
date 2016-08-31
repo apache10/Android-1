@@ -22,6 +22,7 @@ import com.example.vishalkumar1.moviesrating.activity.fragment.NowPlayingMovieFr
 import com.example.vishalkumar1.moviesrating.activity.fragment.PopularMovieFragment;
 import com.example.vishalkumar1.moviesrating.activity.fragment.SearchMovieFragment;
 import com.example.vishalkumar1.moviesrating.activity.fragment.SearchMResultFragment;
+import com.example.vishalkumar1.moviesrating.activity.fragment.SearchMovies;
 import com.example.vishalkumar1.moviesrating.activity.fragment.SearchPResultFragment;
 import com.example.vishalkumar1.moviesrating.activity.fragment.SearchPersonFragment;
 import com.example.vishalkumar1.moviesrating.activity.fragment.SearchTResultFragment;
@@ -119,8 +120,10 @@ public class MainActivity extends AppCompatActivity
             setToolbarTItle("Now Playing");
             Fragment fragment =new NowPlayingMovieFragment();
             fragmentManager.beginTransaction().replace(R.id.container_main,fragment).commitAllowingStateLoss();
-        } else if (id == R.id.nav_share) {
-
+        } else if (id == R.id.nav_search_movies) {
+            setToolbarTItle("Search Movies");
+            Fragment fragment = new SearchMovies();
+            fragmentManager.beginTransaction().replace(R.id.container_main,fragment).commitAllowingStateLoss();
         } else if (id == R.id.nav_send) {
 
         }

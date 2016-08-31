@@ -5,32 +5,33 @@
         <item
             android:id="@+id/upcoming"
             android:icon="@drawable/ic_menu_send"
-            android:title="Upcoming" />
+            android:title="@string/drawer_upcoming" />
         <item
             android:id="@+id/top_rated"
             android:icon="@drawable/ic_menu_send"
-            android:title="Top Rated" />
+            android:title="@string/drawer_top_rated" />
         <item
             android:id="@+id/popular"
             android:icon="@drawable/ic_menu_send"
-            android:title="Popular" />
+            android:title="@string/drawer_popular" />
         <item
             android:id="@+id/now_playing"
             android:icon="@drawable/ic_menu_send"
-            android:title="Now Playing" />
+            android:title="@string/drawer_now_playing" />
     </group>
 
     <item android:title="Communicate">
-        <menu>
+        //problem with color change of icon??
+        <group android:checkableBehavior="single">
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_search_movies"
                 android:icon="@drawable/ic_menu_send"
-                android:title="to be" />
+                android:title="@string/drawer_search_movies" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
                 android:title="to be" />
-        </menu>
+        </group>
     </item>
 
 </menu>
