@@ -1,6 +1,8 @@
 package com.example.vishalkumar1.moviesrating.rest;
 
 import com.example.vishalkumar1.moviesrating.model.MovieResponse;
+import com.example.vishalkumar1.moviesrating.model.TvSeries;
+import com.example.vishalkumar1.moviesrating.model.TvSeriesResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -31,7 +33,7 @@ public interface ApiInterface {
     Call<MovieResponse> searchMovies(@Query("api_key") String apiKey,@Query("query") String query);
 
     @GET("search/tv")
-    Call<MovieResponse> searchTv(@Query("api_key") String apiKey,@Query("query") String query);
+    Call<TvSeriesResponse> searchTv(@Query("api_key") String apiKey, @Query("query") String query);
 
     @GET("search/person")
     Call<MovieResponse> searchPerson(@Query("api_key") String apiKey,@Query("query") String query);

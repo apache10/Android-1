@@ -18,6 +18,8 @@ import com.example.vishalkumar1.moviesrating.constant.ProjectConst;
 import com.example.vishalkumar1.moviesrating.listener.RecyclerTouchListener;
 import com.example.vishalkumar1.moviesrating.model.Movie;
 import com.example.vishalkumar1.moviesrating.model.MovieResponse;
+import com.example.vishalkumar1.moviesrating.model.TvSeries;
+import com.example.vishalkumar1.moviesrating.model.TvSeriesResponse;
 import com.example.vishalkumar1.moviesrating.rest.ApiClient;
 import com.example.vishalkumar1.moviesrating.rest.ApiInterface;
 
@@ -35,6 +37,7 @@ public class SearchTResultFragment extends BaseFragment {
     private static final String API_KEY= ProjectConst.Api_Key;
     private static String searchMovie="";
     List<Movie> movies;
+    List<TvSeries>tvSeries;
     View view;
 
     public SearchTResultFragment(){
@@ -77,16 +80,16 @@ public class SearchTResultFragment extends BaseFragment {
         }));
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<MovieResponse> call= apiService.searchTv(API_KEY,searchMovie);
-        call.enqueue(new Callback<MovieResponse>() {
+        Call<TvSeriesResponse> call= apiService.searchTv(API_KEY,searchMovie);
+        call.enqueue(new Callback<TvSeriesResponse>() {
             @Override
-            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
-                movies=response.body().getResults();
+            public void onResponse(Call<TvSeriesResponse> call, Response<TvSeriesResponse> response) {
+                tvSeries=response.body().getResults();
                 recyclerView.setAdapter(new MoviesAdapter(movies, R.layout.list_item_movie, getActivity()));
-                Log.d("Number of Movies", "" + movies.size());
+                Log.d("Number of TvSeries", "" + tvSeries.size());
             }
             @Override
-            public void onFailure(Call<MovieResponse> call, Throwable t) {
+            public void onFailure(Call<TvSeriesResponse> call, Throwable t) {
                 Log.d("Error" , "Error");
             }
         });
