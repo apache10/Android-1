@@ -36,6 +36,7 @@ public class SearchTResultFragment extends BaseFragment {
 
     private static final String API_KEY= ProjectConst.Api_Key;
     private static String searchMovie="";
+    private static String searchTvSeries="";
     List<Movie> movies;
     List<TvSeries>tvSeries;
     View view;
@@ -49,7 +50,7 @@ public class SearchTResultFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         view=inflater.inflate(R.layout.fragment_top_rated,container,false);
-        searchMovie=getArguments().getString("Data");
+        searchTvSeries=getArguments().getString("Data");
         callApi();
         return view;
     }
@@ -60,17 +61,17 @@ public class SearchTResultFragment extends BaseFragment {
             return;
         }
 
-        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.movies_recycler_view);
+        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.movies_recycler_view);//changes required
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new TopMovieActivity.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Movie movie = movies.get(position);
+                Movie movie = movies.get(position);//changes required
                 Toast.makeText(getActivity(), movie.getTitle() + " is selected!", Toast.LENGTH_SHORT).show();
 //                Intent intent=new Intent(getActivity(), MoviePageActivity.class);
 //                intent.putExtra("Data", movie);
 //                startActivity(intent);
-                ((MainActivity)getActivity()).moviePage(movie);
+                ((MainActivity)getActivity()).moviePage(movie);//changes required
             }
 
             @Override
@@ -80,12 +81,12 @@ public class SearchTResultFragment extends BaseFragment {
         }));
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<TvSeriesResponse> call= apiService.searchTv(API_KEY,searchMovie);
+        Call<TvSeriesResponse> call= apiService.searchTv(API_KEY,searchMovie);//chnages required
         call.enqueue(new Callback<TvSeriesResponse>() {
             @Override
             public void onResponse(Call<TvSeriesResponse> call, Response<TvSeriesResponse> response) {
                 tvSeries=response.body().getResults();
-                recyclerView.setAdapter(new MoviesAdapter(movies, R.layout.list_item_movie, getActivity()));
+                recyclerView.setAdapter(new MoviesAdapter(movies, R.layout.list_item_movie, getActivity()));//changes required
                 Log.d("Number of TvSeries", "" + tvSeries.size());
             }
             @Override
