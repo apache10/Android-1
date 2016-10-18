@@ -55,8 +55,8 @@ public class TvSeriesAdapter extends RecyclerView.ViewHolder {
 
         @Override
         public void onBindViewHolder(com.example.vishalkumar1.moviesrating.adapter.TvSeriesAdapter.TvSeriesViewHolder holder, int position) {
-            holder.movieTitle.setText(tvSeries.get(position).getTitle());
-            holder.data.setText(tvSeries.get(position).getReleaseDate());
+            holder.movieTitle.setText(tvSeries.get(position).getOriginalName());
+            holder.data.setText(tvSeries.get(position).getFirstAirDate());
             holder.movieDescription.setText(tvSeries.get(position).getOverview());
             holder.rating.setText(tvSeries.get(position).getVoteAverage().toString());
         }

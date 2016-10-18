@@ -48,7 +48,7 @@ public class TvSeries implements Serializable{
 
     public TvSeries(String posterPath, String overview, String firstAirDate, List<Integer> genreIds, Integer id,
                  String originalName, String originalLanguage, String backdropPath, Double popularity,
-                 Integer voteCount, Double voteAverage) {
+                 Integer voteCount, Double voteAverage,String originCountry) {
         this.posterPath = posterPath;
         this.overview = overview;
         this.firstAirDate = firstAirDate;
@@ -60,6 +60,7 @@ public class TvSeries implements Serializable{
         this.popularity = popularity;
         this.voteCount = voteCount;
         this.voteAverage = voteAverage;
+        this.originCountry= originCountry;
     }
     public String getPosterPath() {
         return posterPath;
@@ -150,4 +151,11 @@ public class TvSeries implements Serializable{
         this.voteAverage = voteAverage;
     }
 
+    public String getOriginCountry() {
+        return originCountry;
+    }
+
+    public void setOriginCountry(String originCountry) {
+        this.originCountry = originCountry;
+    }
 }
